@@ -935,7 +935,16 @@ require('lazy').setup({
   },
   {
     'windwp/nvim-ts-autotag',
-    opts = { enable_close = true, enable_rename = true, enable_close_on_slash = false },
+    dependencies = 'nvim-treesitter/nvim-treesitter',
+    config = function()
+      require('nvim-ts-autotag').setup {
+        opts = {
+          enable_close = true, -- Auto close tags
+          enable_rename = true, -- Auto rename pairs
+          enable_close_on_slash = false, -- Auto close on trailing </
+        },
+      }
+    end,
   },
   {
     'ThePrimeagen/harpoon',
